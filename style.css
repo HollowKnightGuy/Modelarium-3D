@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+
 *{
   padding: 0;
   margin: 0;
@@ -13,4 +16,107 @@
 .experience-camvas{
   width: 100%;
   height: 100%;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  font-family: 'Lato', sans-serif; 
+  background-color: #222;
+}
+
+.preloader-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: auto;
+  top: 0; 
+  bottom: 0;
+  background: rgba(0,0,0,1);
+  z-index : 2; 
+}
+
+.percentage {
+  z-index: 100;
+  border: 1px solid #ccc;
+  text-align:center;
+  color: #fff;
+  line-height: 30px;
+  font-size : 15px;
+}
+
+.loader,
+.percentage{
+  
+  height: 30px;
+  max-width: 80%; 
+  border-radius: 20px;
+  font-weight: 300;
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  left: 0; 
+  right: 0;
+  margin : auto; 
+}
+.loader:after,
+.percentage:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.trackbar {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0.99;
+}
+
+.loadbar {
+  width: 0%;
+  height: 100%;
+  background: rgb(116, 116, 230);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: flicker 5s infinite;
+  overflow: hidden;
+}
+
+.glow {
+  width: 0%;
+  height: 0%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 60px 10px #a1e6f4;
+  position: absolute;
+  bottom: -5px;
+  animation: animation 5s infinite;
+}
+
+@keyframes animation {
+  10% {
+    opacity: 0.9;
+  }
+  30% {
+    opacity: 0.86;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.75;
+  }
 }
