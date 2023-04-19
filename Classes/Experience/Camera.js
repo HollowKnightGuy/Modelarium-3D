@@ -17,7 +17,7 @@ export default class Camera{
 
     createPerspectiveCamera(){
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, .1, 1000);
-        this.scene.add(this.perspectiveCamera);
+        // this.scene.add(this.perspectiveCamera);
         this.position =  this.perspectiveCamera.position;
         this.rotation =  this.perspectiveCamera.rotation;
 
@@ -32,15 +32,11 @@ export default class Camera{
             -this.sizes.aspect * this.sizes.frustum / 2,
             this.sizes.frustum / 2,
             -this.sizes.frustum / 2,
-            -100, 
-            100
+            -50, 
+            50
         );
         this.scene.add(this.ortographicCamera);
         
-        const size = 50;
-        const divisions = 50;
-        const gridHelper = new THREE.GridHelper(size, divisions);
-        this.scene.add(gridHelper);
 
         const axesHelper = new THREE.AxesHelper(50);
         this.scene.add(axesHelper);
