@@ -23,6 +23,15 @@ export default class Room{
                     groupchild.receiveShadow = true;
                 })
             }
+
+            if(child.name == "mesa_cristal"){
+                child.material = new THREE.MeshStandardMaterial();
+                // child.material.roughness = .2;
+                // child.material.ior = 1;
+                // child.material.transmission = 4;+
+                child.material.transparent = true;
+                child.material.opacity = .5;
+            }
         });
         console.log(this.actualRoom);
         this.scene.add(this.actualRoom);
