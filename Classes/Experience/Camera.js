@@ -38,8 +38,6 @@ export default class Camera{
         this.scene.add(this.ortographicCamera);
         
 
-        const axesHelper = new THREE.AxesHelper(50);
-        this.scene.add(axesHelper);
     }
 
     setOrbitControls(){

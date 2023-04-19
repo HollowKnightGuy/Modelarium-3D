@@ -18,6 +18,7 @@ export default class Floor{
         })
         this.floor = new THREE.Mesh(this.geometry, this.material);
         this.scene.add(this.floor);
+        this.floor.receiveShadow = true;
         this.floor.rotation.x = Math.PI / 2;
     }
 
