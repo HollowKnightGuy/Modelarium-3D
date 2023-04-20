@@ -44,6 +44,7 @@ export default class Camera{
         this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
         this.controls.enableDamping = true;
         this.controls.enableZoom = true;
+        this.controls.zoomSpeed = 2
     }
 
     resize(){

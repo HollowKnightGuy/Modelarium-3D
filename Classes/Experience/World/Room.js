@@ -26,11 +26,13 @@ export default class Room{
 
             if(child.name == "mesa_cristal"){
                 child.material = new THREE.MeshStandardMaterial();
-                // child.material.roughness = .2;
-                // child.material.ior = 1;
-                // child.material.transmission = 4;+
                 child.material.transparent = true;
                 child.material.opacity = .5;
+            } 
+            if(child.name == "cenicero"){
+                child.material = new THREE.MeshStandardMaterial();
+                child.material.transparent = true;
+                child.material.opacity = .8;
             }
         });
         console.log(this.actualRoom);
