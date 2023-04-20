@@ -9,6 +9,13 @@ export default class Camera{
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
+
+        this.x = 2.5535067129011413;
+        this.y = 3.8023211430859694;
+        this.z = 2.801570030078078;
+        this.xstep = 2.5535067129011413/2560;
+        this.ystep = 3.8023211430859694/2560;
+        this.zstep = 2.801570030078078/2560;
         
         this.createPerspectiveCamera();
         this.createOrtographicCamera();
@@ -26,7 +33,7 @@ export default class Camera{
         this.rotation =  this.perspectiveCamera.rotation;
 
         // this.perspectiveCamera.position.set(-0.0850151243003149,2.6998459476910974,1.7307573372766116);
-        this.perspectiveCamera.position.set(2.5535067129011413,3.8023211430859694,2.801570030078078);
+        this.perspectiveCamera.position.set(this.x,this.y,this.z);
 
         this.perspectiveCamera.updateProjectionMatrix()
 
@@ -60,29 +67,33 @@ export default class Camera{
         this.controls.zoomSpeed = 2
     }
 
-    zoomIn(){
-        this.perspectiveCamera.position.x -= .07;
-        this.perspectiveCamera.position.y -= .07;
-        this.perspectiveCamera.position.z -= .07;
+    zoomIn(xs,ys,zs){
+        this.perspectiveCamera.position.x -= this.perspectiveCamera.position.x - xs;
+        this.perspectiveCamera.position.y -= this.perspectiveCamera.position.y - ys;
+        this.perspectiveCamera.position.z -= this.perspectiveCamera.position.z - zs;
     }
     
-    zoomOut(){
-        this.perspectiveCamera.position.x += .07;
-        this.perspectiveCamera.position.y += .07;
-        this.perspectiveCamera.position.z += .07;
+    zoomOut(xs,ys,zs){
+        this.perspectiveCamera.position.x = this.perspectiveCamera.position.x + xs;
+        this.perspectiveCamera.position.y = this.perspectiveCamera.position.y + ys;
+        this.perspectiveCamera.position.z = this.perspectiveCamera.position.z + zs;
     }
 
     resize(){
         // Updating Perspective camera on Resize
+        let camxstep = this.xstep * this.sizes.width;
+        let camystep = this.ystep * this.sizes.width;
+        let camzstep = this.zstep * this.sizes.width;
+        console.log(camxstep, camystep, camzstep);
         let oldaspect = this.perspectiveCamera.aspect;
-        let newaspect = this.sizes.aspect;
+        let newaspect = this.sizes.width;
         this.perspectiveCamera.aspect = this.sizes.aspect
         this.perspectiveCamera.updateProjectionMatrix()
         
-        if(oldaspect < newaspect){
-            this.zoomIn();
+        if(oldaspect > newaspect){
+            this.zoomIn(camxstep, camystep, camzstep);
         }else{
-            this.zoomOut();
+            this.zoomOut(camxstep, camystep, camzstep);
         }
         // Updating Ortographic camera on Resize
         this.ortographicCamera.updateProjectionMatrix()
