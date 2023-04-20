@@ -4,6 +4,7 @@ import Sizes from './Utils/Sizes.js';
 import Time from './Utils/Time.js';
 import Resources from './Utils/Resources.js';
 import Assets from './Utils/Assets.js';
+// import Presentation from './Utils/Presentation.js';
 
 import Camera from './Camera.js';
 import Renderer from './Renderer.js';
@@ -22,31 +23,12 @@ export default class Experience{
         this.scene = new THREE.Scene();
         this.time = new Time();
         this.sizes = new Sizes();
+        // this.presentation = new Presentation();
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.resources = new Resources(Assets);
         
         this.world = new World(); 
-        let width = 100,
-        perfData = window.performance.timing, // The PerformanceTiming interface represents timing-related performance information for the given page.
-        EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
-        time = parseInt((EstimatedTime/1000)%60)*210;
-
-        // Loadbar Animation
-        $(".loadbar").animate({
-        width: width + "%"
-        }, time);
-
-        // Loadbar Glow Animation
-        $(".glow").animate({
-        width: width + "%"
-        }, time);
-
-
-        // Fading Out Loadbar on Finised
-        setTimeout(function(){
-        $('.preloader-wrap').fadeOut(300);
-        }, time);
         
         this.sizes.on("resize", ()=>{
             this.resize();
@@ -57,6 +39,7 @@ export default class Experience{
     }
 
     update(){
+        console.log(this.camera.position);
         this.camera.update(); 
         this.renderer.update(); 
     }
