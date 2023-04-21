@@ -10,12 +10,13 @@ export default class Camera{
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
 
-        this.x = 2.5535067129011413;
-        this.y = 3.8023211430859694;
-        this.z = 2.801570030078078;
-        this.xstep = 2.5535067129011413/2560;
-        this.ystep = 3.8023211430859694/2560;
-        this.zstep = 2.801570030078078/2560;
+        // this.x = this.sizes.width * 0.01078;
+        // this.y = this.sizes.width * 0.01697;
+        // this.z = this.sizes.width * 0.01183;
+        // this.xstep = this;
+        // this.ystep = this.x / this.sizes.width;
+        // this.zstep = this.z / this.sizes.width;
+
         
         this.createPerspectiveCamera();
         this.createOrtographicCamera();
@@ -31,14 +32,15 @@ export default class Camera{
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, .1, 1000);
         this.position =  this.perspectiveCamera.position;
         this.rotation =  this.perspectiveCamera.rotation;
-
         // this.perspectiveCamera.position.set(-0.0850151243003149,2.6998459476910974,1.7307573372766116);
-        this.perspectiveCamera.position.set(this.x,this.y,this.z);
+
+        this.setCameraPosition();
 
         this.perspectiveCamera.updateProjectionMatrix()
 
 
     }
+    
     
     
     createOrtographicCamera(){
@@ -67,35 +69,84 @@ export default class Camera{
         this.controls.zoomSpeed = 2
     }
 
+    setCamPosValues(xz, proportion, sizesDiv, modifier){
+        if(sizesDiv){
+            this.x = xz;
+            this.z = xz;
+            this.y = this.sizes.width * (proportion* this.sizes.width / (this.sizes.width * modifier));
+        }else{
+            this.x = xz;
+            this.z = xz; 
+            this.y = this.sizes.width * (proportion/ modifier);
+        }
+    }
+
+    setCameraPosition(){
+        if(300 <= this.sizes.width && this.sizes.width < 600){
+            if(this.sizes.width > 500){
+                this.setCamPosValues(3.5, 0.00723, false, .9);
+            }else if(this.sizes.width > 400){
+                this.setCamPosValues(5.1, 0.00523, true, 0.5);
+            }else{
+                this.setCamPosValues( 5.6, 0.00523, true, 0.3);
+            }
+        }
+        else if(600 <= this.sizes.width && this.sizes.width < 1000){
+            if(this.sizes.width > 800){
+                this.setCamPosValues(2.6, 0.00723, false, 1.9);
+            }else if(this.sizes.width > 700){
+                this.setCamPosValues(3, 0.00523, true, 1.3);
+            }else{
+                this.setCamPosValues( 3.5, 0.00523, true, 0.8);
+            }
+        }
+        else if(1000 <= this.sizes.width && this.sizes.width < 1440){
+            if(this.sizes.width > 1200){
+                this.setCamPosValues( 2.9, 0.00723, true, 2.9);
+            }else{
+                this.setCamPosValues( 2.7, 0.00523, true, 1.9);
+            }
+        }
+        else if( 1440 <= this.sizes.width && this.sizes.width < 2000){
+            if(this.sizes.width < 1760 ){
+                this.setCamPosValues( 3.1, 0.00523, true, 2.4);
+            }else{
+                this.setCamPosValues( 3.1, 0.00523, true, 3.3);
+            }
+        }
+        else if(this.sizes.width >= 2000){            
+            if(this.sizes.width > 2300){
+                this.setCamPosValues( 2.8, 0.00323, true, 2.5);
+                
+            }else{
+                this.setCamPosValues( 3.1, 0.00523, true,  3.4);
+            }
+
+        }
+        this.zoomOut(this.x, this.y, this.z);
+    }
+
     zoomIn(xs,ys,zs){
-        this.perspectiveCamera.position.x -= this.perspectiveCamera.position.x - xs;
-        this.perspectiveCamera.position.y -= this.perspectiveCamera.position.y - ys;
-        this.perspectiveCamera.position.z -= this.perspectiveCamera.position.z - zs;
+        this.perspectiveCamera.position.x = this.x - (this.x - xs)*1.2;
+        this.perspectiveCamera.position.y = this.y - (this.y - ys)*1.2;
+        this.perspectiveCamera.position.z = this.z - (this.z - zs)*1.2;
     }
     
     zoomOut(xs,ys,zs){
-        this.perspectiveCamera.position.x = this.perspectiveCamera.position.x + xs;
-        this.perspectiveCamera.position.y = this.perspectiveCamera.position.y + ys;
-        this.perspectiveCamera.position.z = this.perspectiveCamera.position.z + zs;
+        this.perspectiveCamera.position.x = this.x + (this.x - xs)*1.2;
+        this.perspectiveCamera.position.y = this.y + (this.y - ys)*1.2;
+        this.perspectiveCamera.position.z = this.z + (this.z - zs)*1.2;
     }
 
     resize(){
+        
         // Updating Perspective camera on Resize
-        let camxstep = this.xstep * this.sizes.width;
-        let camystep = this.ystep * this.sizes.width;
-        let camzstep = this.zstep * this.sizes.width;
-        console.log(camxstep, camystep, camzstep);
-        let oldaspect = this.perspectiveCamera.aspect;
-        let newaspect = this.sizes.width;
+        this.sizes.width = window.innerWidth;
+        this.sizes.height = window.innerHeight;
         this.perspectiveCamera.aspect = this.sizes.aspect
         this.perspectiveCamera.updateProjectionMatrix()
+        this.setCameraPosition();
         
-        if(oldaspect > newaspect){
-            this.zoomIn(camxstep, camystep, camzstep);
-        }else{
-            this.zoomOut(camxstep, camystep, camzstep);
-        }
-        // Updating Ortographic camera on Resize
         this.ortographicCamera.updateProjectionMatrix()
         this.ortographicCamera.left = -this.sizes.aspect * this.sizes.frustum / 2;
         this.ortographicCamera.right = -this.sizes.aspect * this.sizes.frustum / 2;
