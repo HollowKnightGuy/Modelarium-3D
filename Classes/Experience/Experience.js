@@ -4,7 +4,7 @@ import Sizes from './Utils/Sizes.js';
 import Time from './Utils/Time.js';
 import Resources from './Utils/Resources.js';
 import Assets from './Utils/Assets.js';
-// import Presentation from './Utils/Presentation.js';
+import Movement from './Utils/Movement.js';
 
 import Camera from './Camera.js';
 import Renderer from './Renderer.js';
@@ -23,11 +23,13 @@ export default class Experience{
         this.scene = new THREE.Scene();
         this.time = new Time();
         this.sizes = new Sizes();
+        this.Movement = new Movement();
         // this.presentation = new Presentation();
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.resources = new Resources(Assets);
         
+
         this.world = new World(); 
         
         this.sizes.on("resize", ()=>{
@@ -39,7 +41,8 @@ export default class Experience{
     }
 
     update(){
-        // console.log(this.camera.position);
+        
+        // console.log(this.camera.position, this.camera.rotation);
         this.camera.update(); 
         this.renderer.update(); 
     }
@@ -48,4 +51,6 @@ export default class Experience{
         this.renderer.resize();
         this.camera.resize();
     }
+
+    
 }

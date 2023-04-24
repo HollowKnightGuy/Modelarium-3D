@@ -1,6 +1,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import Movement from './Utils/Movement.js';
 import Experience from "./Experience";
+import lib from '../lib.js';
+
 
 
 export default class Camera{
@@ -9,6 +12,8 @@ export default class Camera{
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
+        this.lib = new lib();
+        this.movement = new Movement(); 
 
         // this.x = this.sizes.width * 0.01078;
         // this.y = this.sizes.width * 0.01697;
@@ -25,16 +30,28 @@ export default class Camera{
         // this.experience.presentation.on("1times", this.setOrbitControls())
 
         this.axes = new THREE.AxesHelper(5,5,5);
-        this.scene.add(this.axes)
+
+
     }
 
     createPerspectiveCamera(){
+
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, .1, 1000);
         this.position =  this.perspectiveCamera.position;
         this.rotation =  this.perspectiveCamera.rotation;
         // this.perspectiveCamera.position.set(-0.0850151243003149,2.6998459476910974,1.7307573372766116);
 
         this.setCameraPosition();
+
+        this.movement.on("ordenador", () => {
+            this.lib.moverCamara(this.perspectiveCamera, 
+                -0.5835919996199936,
+                0.5282367512799564,
+                0.1328453658371688,
+                -1.593674731116795,
+                1.4036501606268366,
+                1.593997965488634);
+        })
 
         this.perspectiveCamera.updateProjectionMatrix()
 
@@ -64,9 +81,9 @@ export default class Camera{
         // this.controls.target.set(-0.08501511322199432,1.316647437350878,1.7307559531615184)
         this.controls.target.set(0, .3 ,0)
 
-        this.controls.enableDamping = true;
+        // this.controls.enableDamping = t  rue;
         this.controls.enableZoom = true;
-        this.controls.zoomSpeed = 2
+        this.controls.zoomSpeed = 5
     }
 
     setCamPosValues(xz, proportion, sizesDiv, modifier){

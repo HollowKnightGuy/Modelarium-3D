@@ -35,7 +35,7 @@ export default class Room{
                 child.material.opacity = .8;
             }
         });
-        console.log(this.actualRoom);
+        // console.log(this.actualRoom);
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.11, 0.11, 0.11)    
     }
