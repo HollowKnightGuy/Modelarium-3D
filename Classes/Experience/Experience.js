@@ -42,7 +42,7 @@ export default class Experience{
 
     update(){
         
-        // console.log(this.camera.position, this.camera.rotation);
+        console.log(this.camera.position);
         this.camera.update(); 
         this.renderer.update(); 
     }
