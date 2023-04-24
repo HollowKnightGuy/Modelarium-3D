@@ -7,7 +7,10 @@ import Experience from "../Experience.js";
 export default class Sizes extends EventEmitter{
     constructor(){
         super();
-        this.onclick = function(event){
+        this.originmovement = function(){
+            this.emit("origen");
+        }
+        this.interactive = function(event){
             let experience = new Experience();
             let rayCaster = new THREE.Raycaster();
             let mousePosition = new THREE.Vector2();
@@ -18,12 +21,17 @@ export default class Sizes extends EventEmitter{
             rayCaster.setFromCamera( mousePosition, experience.camera.perspectiveCamera );
             var intersects = rayCaster.intersectObjects(experience.scene.children, true);
             for(let i = 0; i < intersects.length; i++){
+                console.log(intersects[i].object.userData);
                if(intersects[i].object.userData.name == "mesaordenador"){
                 this.emit("ordenador");
                }
+               if(intersects[i].object.userData.name == "arcade"){
+                this.emit("arcade");
+               }
             }
         }
-        document.body.addEventListener('click', this.onclick.bind(this), false)
+        document.body.addEventListener('click', this.interactive.bind(this), false)
+        document.querySelector("button").addEventListener('click', this.originmovement.bind(this));
     }
 
     resize(){

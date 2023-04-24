@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Movement from './Utils/Movement.js';
 import Experience from "./Experience";
-import lib from '../lib2.js';
+import lib from '../lib.js';
 
 
 
@@ -39,31 +39,60 @@ export default class Camera{
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, .1, 1000);
         this.position =  this.perspectiveCamera.position;
         this.rotation =  this.perspectiveCamera.rotation;
-        // this.perspectiveCamera.position.set(-0.0850151243003149,2.6998459476910974,1.7307573372766116);
 
         this.setCameraPosition();
 
 
-        this.movement.on("ordenador", () => {
-            this.lib.moverCamara(
-                this.perspectiveCamera, 
-                this.controls, 
-                -0.60219973482006,
-                0.5501302476000813,
-                0.10285366020236063,
-                -1.5423380388518872,
-                1.2335233302186264,
-                1.5406399929963746,
-                -0.9417680921817115,
-                0.4603504952505593,
-                0.10787983270274792);
-        })
+        this.movement.on("ordenador", this.moverAOrdenador.bind(this))
+        this.movement.on("origen", this.moverAOrigen.bind(this));
         this.perspectiveCamera.updateProjectionMatrix()
 
 
 
     }
     
+    moverAOrdenador(){
+        this.lib.moverCamara(
+            this.perspectiveCamera, 
+            this.controls, 
+            -0.60219973482006,
+            0.5501302476000813,
+            0.10285366020236063,
+            -1.5423380388518872,
+            1.2335233302186264,
+            1.5406399929963746,
+            -0.9417680921817115,
+            0.4603504952505593,
+            0.10787983270274792);
+    }
+
+    moverAOrigen(){
+        let camValues = this.setCameraPosition(true);
+        let xorb = 0.0001;
+        let yorb = .3001;
+        let zorb = 0.0001;
+        if(this.position.x != camValues[0] && this.position.y != camValues[1] && this.position.y != camValues[2]){
+            if(this.controls.target.x === xorb ||
+                this.controls.target.y === yorb ||
+                this.controls.target.z === zorb){
+                    let xorb = 0.001;
+                    let yorb = .3;
+                    let zorb = 0.001;
+                }
+            this.lib.moverCamara(
+                this.perspectiveCamera, 
+                this.controls, 
+                camValues[0],
+                camValues[1],
+                camValues[2],
+                -0.8517051944025393,
+                0.5824676936125961,
+                0.5609967955279564,
+                xorb,
+                yorb,
+                zorb);
+        }
+    }
     
     
     createOrtographicCamera(){
@@ -102,7 +131,7 @@ export default class Camera{
         }
     }
 
-    setCameraPosition(){
+    setCameraPosition(returnSomething = false){
         if(300 <= this.sizes.width && this.sizes.width < 600){
             if(this.sizes.width > 500){
                 this.setCamPosValues(3.5, 0.00723, false, .9);
@@ -144,7 +173,12 @@ export default class Camera{
             }
 
         }
-        this.zoomOut(this.x, this.y, this.z);
+
+        if(returnSomething){
+            return [this.x,this.y, this.z];
+        }else{
+            this.zoomOut(this.x, this.y, this.z);
+        }
     }
 
     zoomIn(xs,ys,zs){
