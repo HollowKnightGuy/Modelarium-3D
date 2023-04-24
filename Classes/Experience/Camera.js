@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Movement from './Utils/Movement.js';
 import Experience from "./Experience";
-import lib from '../lib.js';
+import lib from '../lib2.js';
 
 
 
@@ -43,21 +43,23 @@ export default class Camera{
 
         this.setCameraPosition();
 
+
         this.movement.on("ordenador", () => {
-            this.lib.moverCamara(this.perspectiveCamera, 
+            this.lib.moverCamara(
+                this.perspectiveCamera, 
+                this.controls, 
                 -0.60219973482006,
                 0.5501302476000813,
                 0.10285366020236063,
                 -1.5423380388518872,
                 1.2335233302186264,
-                1.5406399929963746);
-                this.controls.target.set(
-                    -0.9417680921817115,
-                    0.4603504952505593,
-                    0.10787983270274792);
+                1.5406399929963746,
+                -0.9417680921817115,
+                0.4603504952505593,
+                0.10787983270274792);
         })
-
         this.perspectiveCamera.updateProjectionMatrix()
+
 
 
     }
@@ -81,9 +83,7 @@ export default class Camera{
 
     setOrbitControls(){
         this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
-
-        // this.controls.target.set(-0.08501511322199432,1.316647437350878,1.7307559531615184)
-        this.controls.target.set(0, .3 ,0)
+        this.controls.target.set(0.001, .3, 0.001)
 
         // this.controls.enableDamping = t  rue;
         this.controls.enableZoom = true;
