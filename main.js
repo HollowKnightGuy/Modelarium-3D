@@ -1,7 +1,7 @@
 import './style.css';
 import Experience from './Classes/Experience/Experience';
 let person;
-person = prompt("Please enter your name");
+// person = prompt("Please enter your name");
 if(person === null || person === ''){
     person = 'user';
 }

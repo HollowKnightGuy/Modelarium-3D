@@ -118,12 +118,12 @@ export default class Camera{
         this.controls.target.set(0.001, .3, 0.001)
 
 
-        this.controls.minAzimuthAngle = - Math.PI * 0.01; // radians
+        this.controls.minAzimuthAngle = - Math.PI * 0.1; // radians
         this.controls.maxAzimuthAngle = Math.PI * 0.55; // radians
         this.controls.minPolarAngle = 0;
-		this.controls.maxPolarAngle =  Math.PI * 0.35;
-        this.controls.enableDamping = true;
-        this.controls.rotateSpeed = .1;
+		this.controls.maxPolarAngle =  Math.PI * 0.43;
+        // this.controls.enableDamping = true;
+        this.controls.rotateSpeed = .3;
         this.controls.panSpeed = .3;
         this.controls.enableZoom = true;
         this.controls.zoomSpeed = .5;
