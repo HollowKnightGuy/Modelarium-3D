@@ -17,8 +17,8 @@ export default class Usertext{
         else if(this.lenghtname > 11) this.size = .069 
         else if(this.lenghtname > 8) this.size = .07 
         else if(this.lenghtname > 5) this.size = .08 
-        console.log(this.lenghtname);
-        console.log(this.size);
+        // console.log(this.lenghtname);
+        // console.log(this.size);
         this.setText();
     }
     

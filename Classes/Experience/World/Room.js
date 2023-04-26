@@ -35,7 +35,7 @@ export default class Room{
                 child.material.opacity = .8;
             }
             if(child.name == "titulopagina"){
-                console.log(child);
+                // console.log(child);
             }
         });
         // console.log(this.actualRoom);

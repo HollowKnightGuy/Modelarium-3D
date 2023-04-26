@@ -22,7 +22,7 @@ export default class Sizes extends EventEmitter{
             var intersects = rayCaster.intersectObjects(experience.scene.children, true);
             for(let i = 0; i < intersects.length; i++){
                 let Objectname = intersects[i].object.userData.name
-                console.log(intersects[i].object.userData);
+                // console.log(intersects[i].object.userData);
                if( Objectname == "mesaordenador" || Objectname == "Soporte ordenador" || Objectname == "planoordenador"){
                 this.emit("ordenador");
                }

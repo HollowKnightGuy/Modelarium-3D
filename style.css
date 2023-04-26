@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Berlin Sans';
-  src: url(./public/BRLNSDB.TTF);
+  src: url(./public/fonts/BRLNSDB.TTF);
 }
 
 *{
@@ -52,6 +52,7 @@ body {
   font-family: 'Berlin Sans';
   font-weight: 200;
   color: #303030;
+  color: #101010;
 }
 
 button:hover{
