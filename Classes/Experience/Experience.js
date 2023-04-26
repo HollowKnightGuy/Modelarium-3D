@@ -14,7 +14,7 @@ import World from './World/World.js';
 
 export default class Experience{
     static instance
-    constructor(canvas){
+    constructor(canvas, name = "null"){
         if(Experience.instance){
             return  Experience.instance;
         }
@@ -30,7 +30,7 @@ export default class Experience{
         this.resources = new Resources(Assets);
         
 
-        this.world = new World(); 
+        this.world = new World(name); 
         
         this.sizes.on("resize", ()=>{
             this.resize();
@@ -42,7 +42,7 @@ export default class Experience{
 
     update(){
         
-        // console.log(this.camera.rotation);
+        // console.log(this.camera.position);
         this.camera.update(); 
         this.renderer.update(); 
     }

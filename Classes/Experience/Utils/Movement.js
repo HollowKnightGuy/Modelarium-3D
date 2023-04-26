@@ -21,11 +21,12 @@ export default class Sizes extends EventEmitter{
             rayCaster.setFromCamera( mousePosition, experience.camera.perspectiveCamera );
             var intersects = rayCaster.intersectObjects(experience.scene.children, true);
             for(let i = 0; i < intersects.length; i++){
+                let Objectname = intersects[i].object.userData.name
                 console.log(intersects[i].object.userData);
-               if(intersects[i].object.userData.name == "mesaordenador"){
+               if( Objectname == "mesaordenador" || Objectname == "Soporte ordenador" || Objectname == "planoordenador"){
                 this.emit("ordenador");
                }
-               if(intersects[i].object.userData.name == "arcade"){
+               if(Objectname == "arcade"){
                 this.emit("arcade");
                }
             }

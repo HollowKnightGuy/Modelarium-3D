@@ -34,6 +34,9 @@ export default class Room{
                 child.material.transparent = true;
                 child.material.opacity = .8;
             }
+            if(child.name == "titulopagina"){
+                console.log(child);
+            }
         });
         // console.log(this.actualRoom);
         this.scene.add(this.actualRoom);

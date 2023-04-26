@@ -52,6 +52,7 @@ export default class Camera{
     }
     
     moverAOrdenador(){
+        this.controls.enabled = false;
         this.lib.moverCamara(
             this.perspectiveCamera, 
             this.controls, 
@@ -75,9 +76,9 @@ export default class Camera{
             if(this.controls.target.x === xorb ||
                 this.controls.target.y === yorb ||
                 this.controls.target.z === zorb){
-                    let xorb = 0.001;
-                    let yorb = .3;
-                    let zorb = 0.001;
+                    xorb = 0.001;
+                    yorb = .3;
+                    zorb = 0.001;
                 }
             this.lib.moverCamara(
                 this.perspectiveCamera, 
@@ -92,6 +93,8 @@ export default class Camera{
                 yorb,
                 zorb);
         }
+        this.controls.enabled = true;
+        
     }
     
     
@@ -114,9 +117,11 @@ export default class Camera{
         this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
         this.controls.target.set(0.001, .3, 0.001)
 
-        // this.controls.enableDamping = t  rue;
+        // this.controls.enableDamping = true;
+        this.controls.rotateSpeed = .3;
+        this.controls.panSpeed = .3;
         this.controls.enableZoom = true;
-        this.controls.zoomSpeed = 5
+        this.controls.zoomSpeed = .5;
     }
 
     setCamPosValues(xz, proportion, sizesDiv, modifier){

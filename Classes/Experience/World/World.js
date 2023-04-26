@@ -3,9 +3,10 @@ import Experience from "../Experience.js";
 import Room from './Room.js';
 import Environment from './Environment.js';
 import Floor from './Floor.js';
+import Usertext from './UserText.js';
 
 export default class World{
-    constructor(){
+    constructor(name){
         this.experience = new Experience();
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
@@ -18,6 +19,7 @@ export default class World{
             this.environment = new Environment();
             this.room = new Room();
             this.floor = new Floor();
+            this.usertext = new Usertext(name);
         })
 
     }

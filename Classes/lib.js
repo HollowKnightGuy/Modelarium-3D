@@ -116,7 +116,7 @@ export default class lib{
             xorbstep = this.CamStepCalculator(orbControls.target.x, xorb);
             yorbstep = this.CamStepCalculator(orbControls.target.y, yorb);
             zorbstep = this.CamStepCalculator(orbControls.target.z, zorb);
-
+            console
         }
         const movcamara = setInterval(function () {
             if(veces < 501){
