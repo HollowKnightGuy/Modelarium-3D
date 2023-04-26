@@ -39,7 +39,6 @@ export default class Camera{
         this.perspectiveCamera = new THREE.PerspectiveCamera(35, this.sizes.aspect, .1, 1000);
         this.position =  this.perspectiveCamera.position;
         this.rotation =  this.perspectiveCamera.rotation;
-
         this.setCameraPosition();
 
 
@@ -117,13 +116,14 @@ export default class Camera{
         this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
         this.controls.target.set(0.001, .3, 0.001)
 
-
+        this.controls.minDistance = 0.3;
+        this.controls.maxDistance = 8;
         this.controls.minAzimuthAngle = - Math.PI * 0.1; // radians
         this.controls.maxAzimuthAngle = Math.PI * 0.55; // radians
         this.controls.minPolarAngle = 0;
 		this.controls.maxPolarAngle =  Math.PI * 0.43;
         // this.controls.enableDamping = true;
-        this.controls.rotateSpeed = .3;
+        this.controls.rotateSpeed = .1;
         this.controls.panSpeed = .3;
         this.controls.enableZoom = true;
         this.controls.zoomSpeed = .5;

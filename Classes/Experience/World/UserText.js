@@ -10,7 +10,8 @@ export default class Usertext{
         this.loader = new FontLoader();
         this.name = name;
         this.lenghtname = name.length;
-        this.size = .1
+        this.size = .1;
+        this.urlfont = new URL('../../../public/fonts/BRLNSDB.json', import.meta.url);
         if(this.lenghtname > 20) this.size = .053 
         else if(this.lenghtname > 17) this.size = .058 
         else if(this.lenghtname > 14) this.size = .063
@@ -24,7 +25,7 @@ export default class Usertext{
     
     
     setText(){
-        this.loader.load('./public/fonts/BRLNSDB.json', function(font){
+        this.loader.load(this.urlfont, function(font){
             
             const geometry = new TextGeometry('Hola '+ this.name +', Bienvenido!',  {
                 font:font,
