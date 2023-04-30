@@ -42,17 +42,18 @@ export default class Camera{
         this.setCameraPosition();
 
 
-        this.movement.on("ordenador", this.moverAOrdenador.bind(this))
-        this.movement.on("origen", this.moverAOrigen.bind(this));
+        this.movement.on("ordenador", this.moveToPc.bind(this))
+        this.movement.on("arcade", this.moveToArcade.bind(this))
+        this.movement.on("origen", this.moveToOrigin.bind(this));
         this.perspectiveCamera.updateProjectionMatrix()
 
 
 
     }
     
-    moverAOrdenador(){
+    moveToPc(){
         this.controls.enabled = false;
-        this.lib.moverCamara(
+        this.lib.moveCamera(
             this.perspectiveCamera, 
             this.controls, 
             -0.60219973482006,
@@ -66,7 +67,23 @@ export default class Camera{
             0.10787983270274792);
     }
 
-    moverAOrigen(){
+    moveToArcade(){
+        // this.controls.enabled = false;
+        this.lib.moveCamera(
+            this.perspectiveCamera, 
+            this.controls, 
+            -0.31270755051079924,
+            0.5889805588759206,
+            0.6105217812838912,
+            -1.41382424660987,
+            1.4587610684534735,
+            1.6949084574137514,
+            -0.6365761707513888,
+            0.5528200874013415,
+            0.6150046391096257);
+    }
+
+    moveToOrigin(){
         let camValues = this.setCameraPosition(true);
         let xorb = 0.0001;
         let yorb = .3001;
@@ -79,7 +96,7 @@ export default class Camera{
                     yorb = .3;
                     zorb = 0.001;
                 }
-            this.lib.moverCamara(
+            this.lib.moveCamera(
                 this.perspectiveCamera, 
                 this.controls, 
                 camValues[0],
@@ -122,11 +139,14 @@ export default class Camera{
         this.controls.maxAzimuthAngle = Math.PI * 0.55; // radians
         this.controls.minPolarAngle = 0;
 		this.controls.maxPolarAngle =  Math.PI * 0.43;
-        // this.controls.enableDamping = true;
+        this.controls.enableDamping = true;
         this.controls.rotateSpeed = .1;
         this.controls.panSpeed = .3;
-        this.controls.enableZoom = true;
         this.controls.zoomSpeed = .5;
+        this.controls.enableZoom = true;
+        // this.controls.rotateSpeed = 1;
+        // this.controls.panSpeed = 1;
+        // this.controls.zoomSpeed = 2;
     }
 
     setCamPosValues(xz, proportion, sizesDiv, modifier){

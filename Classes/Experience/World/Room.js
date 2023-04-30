@@ -29,6 +29,14 @@ export default class Room{
                 child.material.transparent = true;
                 child.material.opacity = .5;
             } 
+            if(child.name == "arcadehitbox"){
+                child.material = new THREE.MeshStandardMaterial();
+                child.material.transparent = true;
+                child.material.opacity = 0;
+                child.castShadow = false;
+                child.receiveShadow = false;
+
+            } 
             if(child.name == "cenicero"){
                 child.material = new THREE.MeshStandardMaterial();
                 child.material.transparent = true;

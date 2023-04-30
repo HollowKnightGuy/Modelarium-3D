@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/main.js" defer></script>
     <title>Vite App</title>
@@ -17,10 +16,13 @@
       <div class="loadercolor">
         <img src="./public/img/logoloader/logoloadercolor.jpg" alt="logoloadergrey.jpg" class="logoloader">
         <h3 style="z-index: 5;">Cargando <span class="percentage" id="percentage"></h3>
+
+        <a id="enlace" href="a.html"></a>
+        
       </div>
     </div>
     <div class="experience">
-      <button style="position: absolute; background:transparent;">Volver al inicio</button>
+      <button style="display:none; position: absolute; background:transparent;">Volver al inicio</button>
       <canvas class="experience-canvas"></canvas>
     </div>
     <div id="rotator" style="height:100px;width:100px"></div>

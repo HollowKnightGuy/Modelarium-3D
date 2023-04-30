@@ -17,21 +17,22 @@ export default class Sizes extends EventEmitter{
             var bounds = document.body.getBoundingClientRect()
             mousePosition.x = ( (event.clientX - bounds.left) / document.body.clientWidth ) * 2 - 1;
             mousePosition.y = - ( (event.clientY - bounds.top) / document.body.clientHeight ) * 2 + 1;
-            // console.log(experience.camera.perspectiveCamera);
             rayCaster.setFromCamera( mousePosition, experience.camera.perspectiveCamera );
             var intersects = rayCaster.intersectObjects(experience.scene.children, true);
             for(let i = 0; i < intersects.length; i++){
                 let Objectname = intersects[i].object.userData.name
                 // console.log(intersects[i].object.userData);
-               if( Objectname == "mesaordenador" || Objectname == "Soporte ordenador" || Objectname == "planoordenador"){
-                this.emit("ordenador");
-               }
-               if(Objectname == "arcade"){
-                this.emit("arcade");
-               }
+
+                if( Objectname == "mesaordenador" || Objectname == "Soporte ordenador" || Objectname == "planoordenador"){
+                    this.emit("ordenador");
+                }
+                if(Objectname == "arcadehitbox"){
+                    console.log(1)
+                    this.emit("arcade");
+                }
             }
         }
-        document.body.addEventListener('click', this.interactive.bind(this), false)
+        document.body.addEventListener('click', this.interactive.bind(this), false);
         document.querySelector("button").addEventListener('click', this.originmovement.bind(this));
     }
 

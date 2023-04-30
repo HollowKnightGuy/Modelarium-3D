@@ -100,10 +100,12 @@ export default class lib{
      */
     deleteInterval(interval){
         clearInterval(interval);
+        document.getElementById("enlace").click();
+        document.body.style.cursor = "progress";
     }
 
 
-     moverCamara(camera, orbControls, x, y, z, xr = 0, yr = 0, zr = 0, xorb, yorb, zorb){
+     moveCamera(camera, orbControls, x, y, z, xr = 0, yr = 0, zr = 0, xorb, yorb, zorb){
          aceleracion = 1;
          veces = 0;
         if(veces < 2){

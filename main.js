@@ -1,6 +1,7 @@
 import './style.css';
 import Experience from './Classes/Experience/Experience';
 let person;
+
 // person = prompt("Please enter your name");
 if(person === null || person === ''){
     person = 'user';
@@ -51,6 +52,6 @@ setTimeout(function(){
   $('.loader').fadeOut(300);
 }, time);
 
-const experience = new Experience(document.querySelector('.experience-canvas'), person)
 
+const experience = new Experience(document.querySelector('.experience-canvas'), person)
 
