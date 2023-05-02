@@ -1,6 +1,3 @@
-
-<iframe src="header.html"></iframe>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,21 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/form-styles.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <title>Login</title>
 </head>
 <body>
+    <iframe src="header.html" frameBorder="0" width="100%"></iframe>
     
     <div class="container">
         <h1 class="title">Login</h1>
-        <div class="form-container">
-
             <form action="#" class="form">
-                <input type="email" name="email" id="email" placeholder="email@example.com">
-                <input type="password" name="pass" id="pass" placeholder="...........">
-                <input type="submit" value="Login">
-                <span>Are you not registered? </span><a class="link" href="./registerform.html">Click here</a>
+                <div class="input-container">
+                    <input type="email" name="email" id="email" placeholder="email@example.com"> <span class="required">*</span>
+                </div>
+                <div class="input-container">
+                    <input type="password" name="pass" id="pass" placeholder="··············"> <span class="required">*</span>
+                </div>
+                <input class="submit" type="submit" value="LOGIN">
+                <span>Are you not registered? <a class="link" href="./registerform.html">Click here</a></span>
+                <br>
+                <span>Wanna be a creator? <a class="link" href="./creatorform.html">Click here</a></span>
             </form>
-        </div>
     </div>
 
 </body>

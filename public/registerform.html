@@ -5,24 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/form-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
     <title>Register</title>
 </head>
 <body>
-    <div class="container">
+    <iframe src="header.html" frameBorder="0" width="100%"></iframe>
+    
+    <div class="container registerContainer">
         <h1 class="title">Register</h1>
-        <div class="form-container">
+        <form action="#" method="GET" class="form">
+            <div class="input-container">
+                <input type="text" name="username" id="username" placeholder="Username"> <span class="required">*</span>
+            </div>
+            <div class="input-container">
+                <input type="email" name="email" id="email" placeholder="email@example.com"> <span class="required">*</span>
+            </div>
+            <div class="input-container">
+                <input type="password" name="pass" id="pass" placeholder="··············"> <span class="required">*</span>
+            </div>
+            <div class="input-container">
+                <button class="select-file-btn"><span>Select File</span><img src="./img/icons/upload-file2.svg" alt="upload-file"></button>
+                <input type="text" placeholder="ProfilePhoto.png" readonly>
 
-            <form action="#" class="form">
-                <input type="text" name="username" id="username" placeholder="Username">
-                <input type="email" name="email" id="email" placeholder="email@example.com">
-                <input type="password" name="pass" id="pass" placeholder="...........">
-                <input type="file" name="file" id="file">
-                <textarea name="desc" id="desc" cols="30" rows="10" placeholder="Profile Description"></textarea>
-                
-                <input type="submit" value="Register">
-                <span>Already have an account? </span><a class="link" href="./loginform.html">Log in</a>
-            </form>
-        </div>
+                <input type="file" name="file" id="file" hidden> <span class="required">*</span>
+            </div>
+            <div class="input-container">
+                <textarea name="desc" id="desc" rows="10" placeholder="Profile Description"></textarea>
+            </div>            
+            <input type="submit" class="submit" value="REGISTER">
+            <span>Already have an account? <a class="link" href="./loginform.html">Log in</a></span>
+        </form>
     </div>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
 </body>
 </html>
