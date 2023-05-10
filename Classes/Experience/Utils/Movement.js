@@ -27,7 +27,6 @@ export default class Sizes extends EventEmitter{
                     this.emit("ordenador");
                 }
                 if(Objectname == "arcadehitbox"){
-                    console.log(1)
                     this.emit("arcade");
                 }
             }

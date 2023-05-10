@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Movement from './Utils/Movement.js';
 import Experience from "./Experience";
 import lib from '../lib.js';
+import gsap from 'gsap';
 
 
 
@@ -53,34 +54,41 @@ export default class Camera{
     
     moveToPc(){
         this.controls.enabled = false;
-        this.lib.moveCamera(
-            this.perspectiveCamera, 
-            this.controls, 
-            -0.60219973482006,
-            0.5501302476000813,
-            0.10285366020236063,
-            -1.5423380388518872,
-            1.2335233302186264,
-            1.5406399929963746,
-            -0.9417680921817115,
-            0.4603504952505593,
-            0.10787983270274792);
+        gsap.to(this.perspectiveCamera.position, {
+            x:-0.60219973482006,
+            y:0.5501302476000813,
+            z:0.10285366020236063,
+            duration: 4.2,
+            ease:"power3.inOut",
+            });
+
+        gsap.to(this.controls.target, {
+            x:-0.9417680921817115,
+            y:0.4603504952505593,
+            z:0.10787983270274792,
+            duration: 4.2,
+            ease:"power3.inOut",
+            });
     }
 
     moveToArcade(){
-        // this.controls.enabled = false;
-        this.lib.moveCamera(
-            this.perspectiveCamera, 
-            this.controls, 
-            -0.31270755051079924,
-            0.5889805588759206,
-            0.6105217812838912,
-            -1.41382424660987,
-            1.4587610684534735,
-            1.6949084574137514,
-            -0.6365761707513888,
-            0.5528200874013415,
-            0.6150046391096257);
+        this.controls.enabled = false;
+        gsap.to(this.perspectiveCamera.position, {
+            x:-0.31270755051079924,
+            y:0.5889805588759206,
+            z:0.6105217812838912,
+            duration: 4.2,
+            ease:"power3.inOut",
+            });
+
+        gsap.to(this.controls.target, {
+            x:-0.6365761707513888,
+            y:0.5528200874013415,
+            z:0.6150046391096257,
+            duration: 4.2,
+            ease:"power3.inOut",
+            });
+
     }
 
     moveToOrigin(){

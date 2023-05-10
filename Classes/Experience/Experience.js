@@ -24,7 +24,6 @@ export default class Experience{
         this.time = new Time();
         this.sizes = new Sizes();
         this.Movement = new Movement();
-        // this.presentation = new Presentation();
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.resources = new Resources(Assets);
@@ -42,7 +41,6 @@ export default class Experience{
 
     update(){
         
-        console.log(this.camera.position);
         // console.log(this.camera.rotation);
         this.camera.update(); 
         this.renderer.update(); 
