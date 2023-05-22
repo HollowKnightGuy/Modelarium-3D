@@ -6,22 +6,29 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="main.js" defer></script>
     <title>Vite App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   </head>
   
   <body>
+    <div id="cursor" class="none">
+      <img src="/img/icons/visible.svg" alt="eye.svg">
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <div class="loader">
       <div class="loadercolor">
         <img src="/img/logoloader/logoloadercolor.jpg" alt="logoloadergrey.jpg" class="logoloader">
         <h3 style="z-index: 5;">Cargando <span class="percentage" id="percentage"></h3>
 
-        <a id="enlace" href="/header.html"></a>
-        
+        <a id="arcadelink" href="https://modelarium3d.000webhostapp.com/html/contact.html"></a>
+        <a id="pclink" href="https://modelarium3d.000webhostapp.com"></a>
       </div>
     </div>
     <div class="experience">
       <button style="display:none; position: absolute; background:transparent;">Volver al inicio</button>
-      <canvas class="experience-canvas"></canvas>
+      <canvas class="experience-canvas">
+
+      </canvas>
     </div>
     <div id="rotator" style="height:100px;width:100px"></div>
 

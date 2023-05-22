@@ -43,10 +43,8 @@ export default class Room{
                 child.material.opacity = .8;
             }
             if(child.name == "titulopagina"){
-                // console.log(child);
             }
         });
-        // console.log(this.actualRoom);
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.11, 0.11, 0.11)    
     }

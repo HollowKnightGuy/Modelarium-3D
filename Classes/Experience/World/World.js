@@ -5,6 +5,7 @@ import Environment from './Environment.js';
 import Floor from './Floor.js';
 
 import Usertext from './UserText.js';
+import HoverGeoms from './HoverGeoms.js';
 
 export default class World{
     constructor(name){
@@ -21,6 +22,7 @@ export default class World{
             this.room = new Room();
             this.floor = new Floor();
             this.usertext = new Usertext(name);
+            this.HoverGeoms = new HoverGeoms();
         })
 
     }

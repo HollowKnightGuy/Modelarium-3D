@@ -7,6 +7,15 @@ if(person === null || person === ''){
     person = 'user';
 }
 
+
+
+
+document.onmousemove = e => {
+  document.getElementById('cursor').style.cssText = `top: ${e.clientY}px; left: ${e.clientX}px`;
+}
+
+
+
 $('.loader').fadeIn(300);
 
 
@@ -18,9 +27,13 @@ let perfData = window.performance.timing, // The PerformanceTiming interface rep
 EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
 time = parseInt((EstimatedTime/1000)%60)*100;
 
+
+
+
 // Loadbar Animation
 $(".loadercolor").animate(loaderAnimation, {duration: time, iterations:100,});
-console.log(time);
+
+
 
 // Percentage Increment Animation
 let PercentageID = $("#percentage"),

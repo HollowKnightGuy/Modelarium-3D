@@ -4,9 +4,9 @@ import Sizes from './Utils/Sizes.js';
 import Time from './Utils/Time.js';
 import Resources from './Utils/Resources.js';
 import Assets from './Utils/Assets.js';
-import Movement from './Utils/Movement.js';
 
 import Camera from './Camera.js';
+import Movement from './Utils/Movement.js';
 import Renderer from './Renderer.js';
 
 import World from './World/World.js';
@@ -23,8 +23,8 @@ export default class Experience{
         this.scene = new THREE.Scene();
         this.time = new Time();
         this.sizes = new Sizes();
-        this.Movement = new Movement();
         this.camera = new Camera();
+        this.Movement = new Movement();
         this.renderer = new Renderer();
         this.resources = new Resources(Assets);
         
@@ -40,7 +40,7 @@ export default class Experience{
     }
 
     update(){
-        
+
         // console.log(this.camera.rotation);
         this.camera.update(); 
         this.renderer.update(); 

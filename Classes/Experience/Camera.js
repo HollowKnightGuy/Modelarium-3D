@@ -2,9 +2,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Movement from './Utils/Movement.js';
 import Experience from "./Experience";
-import lib from '../lib.js';
 import gsap from 'gsap';
-
+import { TimelineLite } from 'gsap/all';
 
 
 export default class Camera{
@@ -13,15 +12,8 @@ export default class Camera{
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
-        this.lib = new lib();
         this.movement = new Movement(); 
 
-        // this.x = this.sizes.width * 0.01078;
-        // this.y = this.sizes.width * 0.01697;
-        // this.z = this.sizes.width * 0.01183;
-        // this.xstep = this;
-        // this.ystep = this.x / this.sizes.width;
-        // this.zstep = this.z / this.sizes.width;
 
         
         this.createPerspectiveCamera();
@@ -31,7 +23,7 @@ export default class Camera{
         // this.experience.presentation.on("1times", this.setOrbitControls())
 
         this.axes = new THREE.AxesHelper(5,5,5);
-
+        // this.scene.add(this.axes)
 
     }
 
@@ -54,41 +46,46 @@ export default class Camera{
     
     moveToPc(){
         this.controls.enabled = false;
+        let tl = new TimelineLite({
+            onComplete: function(){ document.getElementById("pclink").click() },
+        });
         gsap.to(this.perspectiveCamera.position, {
             x:-0.60219973482006,
             y:0.5501302476000813,
             z:0.10285366020236063,
-            duration: 4.2,
+            duration: 2,
             ease:"power3.inOut",
             });
 
-        gsap.to(this.controls.target, {
+        tl.to(this.controls.target, {
             x:-0.9417680921817115,
             y:0.4603504952505593,
             z:0.10787983270274792,
-            duration: 4.2,
+            duration: 2,
             ease:"power3.inOut",
             });
     }
 
     moveToArcade(){
         this.controls.enabled = false;
+        let tl = new TimelineLite({
+            onComplete: function(){ document.getElementById("arcadelink").click() },
+          });
         gsap.to(this.perspectiveCamera.position, {
             x:-0.31270755051079924,
             y:0.5889805588759206,
             z:0.6105217812838912,
-            duration: 4.2,
+            duration: 2,
             ease:"power3.inOut",
             });
 
-        gsap.to(this.controls.target, {
+        tl.to(this.controls.target, {
             x:-0.6365761707513888,
             y:0.5528200874013415,
             z:0.6150046391096257,
-            duration: 4.2,
+            duration: 2,
             ease:"power3.inOut",
             });
-
     }
 
     moveToOrigin(){
@@ -142,7 +139,7 @@ export default class Camera{
         this.controls.target.set(0.001, .3, 0.001)
 
         this.controls.minDistance = 0.3;
-        this.controls.maxDistance = 8;
+        this.controls.maxDistance = 6;
         this.controls.minAzimuthAngle = - Math.PI * 0.1; // radians
         this.controls.maxAzimuthAngle = Math.PI * 0.55; // radians
         this.controls.minPolarAngle = 0;
