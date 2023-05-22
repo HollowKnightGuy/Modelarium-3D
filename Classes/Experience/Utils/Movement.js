@@ -21,12 +21,12 @@ export default class Movement extends EventEmitter{
             rayCaster.setFromCamera( pointer, experience.camera.perspectiveCamera );
             var intersects = rayCaster.intersectObjects(experience.scene.children, true);
             for(let i = 0; i < intersects.length; i++){
-                let Objectid = intersects[i].object.id
+                let Objectname = intersects[i].object.name
                 // console.log(intersects[i].object.userData);
-                if( Objectid == 167 || Objectid == 168){
+                if( Objectname == "pchover" || Objectname == "pantallahover"){
                     this.emit("ordenador");
                 }
-                if(Objectid == 166){
+                if(Objectname == "arcadehover"){
                     this.emit("arcade");
                 }
             }
@@ -39,8 +39,8 @@ export default class Movement extends EventEmitter{
             var intersects = rayCaster.intersectObjects(experience.scene.children, true);
             let hover = false
             for(let i = 0; i < intersects.length; i++){
-                let Objectid = intersects[i].object.id
-                if(Objectid == 166 || Objectid == 167 || Objectid == 168 || Objectid == 169){
+                let Objectname = intersects[i].object.name
+                if(Objectname == "pchover" || Objectname == "pantallahover" || Objectname == "arcadehover" || Objectname == "ipadhover"){
                     hover = true;
                 }
             }
