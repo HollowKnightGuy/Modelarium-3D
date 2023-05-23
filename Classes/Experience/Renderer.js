@@ -1,8 +1,14 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 import Experience from "./Experience";
 
-export default class Renderer{
-    constructor(){
+/**
+ * Class that is responsible for rendering every single thing on a 3D space
+ * @param  {}
+ * @return  {}
+ * @author Pablo <pablogervilla123@gmail.com>
+ */
+export default class Renderer {
+    constructor() {
         this.experience = new Experience();
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
@@ -12,13 +18,16 @@ export default class Renderer{
         this.setRenderer();
     }
 
-    setRenderer(){
-        this.renderer = new THREE.WebGL1Renderer(
-            {
-                canvas: this.canvas,
-                antialias: true,
-            }
-        );
+    /**
+     * Create and set the renderer
+     * @param  {}
+     * @return  {}
+     */
+    setRenderer() {
+        this.renderer = new THREE.WebGL1Renderer({
+            canvas: this.canvas,
+            antialias: true,
+        });
 
         this.renderer.physicallyCorrectLight = true;
         this.renderer.outputEncoding = THREE.sRGBEncoding;
@@ -30,15 +39,25 @@ export default class Renderer{
         this.renderer.setPixelRatio(this.sizes.pixelRatio);
     }
 
-
-    resize(){
+    
+    /**
+     * Update the size of the renderer
+     * @param  {}
+     * @return  {}
+     */
+    resize() {
         this.renderer.setSize(this.sizes.width, this.sizes.height);
         this.renderer.setPixelRatio(this.sizes.pixelRatio);
         this.update();
     }
 
-    update(){
+
+    /**
+     * Update the renderer so that the room does not mess up
+     * @param  {}
+     * @return  {}
+     */
+    update() {
         this.renderer.render(this.scene, this.camera.perspectiveCamera);
     }
-    
 }

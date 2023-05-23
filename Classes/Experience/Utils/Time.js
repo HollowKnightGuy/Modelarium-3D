@@ -1,7 +1,14 @@
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 
-export default class Time extends EventEmitter{
-    constructor(){
+
+/**
+ * Class that initialize the time variables needed to update the state of the room
+ * @param  {}
+ * @return  {}
+ * @author Pablo <pablogervilla123@gmail.com>
+ */
+export default class Time extends EventEmitter {
+    constructor() {
         super();
         this.start = Date.now();
         this.current = this.start;
@@ -11,9 +18,15 @@ export default class Time extends EventEmitter{
         this.update();
     }
 
-    update(){
+
+    /**
+     * Responsible of emiting the 'update' event to update the state of the room
+     * @param  {}
+     * @return  {}
+     */
+    update() {
         const CurrentTime = Date.now();
-        this.delta = CurrentTime -this.current;
+        this.delta = CurrentTime - this.current;
         this.current = CurrentTime;
         this.elapsed = this.current - this.start;
 
