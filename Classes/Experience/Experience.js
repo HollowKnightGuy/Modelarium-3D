@@ -40,8 +40,9 @@ export default class Experience{
     }
 
     update(){
-
-        // console.log(this.camera.rotation);
+        // setTimeout(() => {
+        //     console.log(this.camera.position, this.camera.controls.target, this.camera.rotation);
+        // }, 700);
         this.camera.update(); 
         this.renderer.update(); 
     }

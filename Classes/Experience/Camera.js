@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Movement from './Utils/Movement.js';
 import Experience from "./Experience";
+import lib from '../lib.js';
 import gsap from 'gsap';
 import { TimelineLite } from 'gsap/all';
 
@@ -13,7 +14,7 @@ export default class Camera{
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
         this.movement = new Movement(); 
-
+        this.lib = new lib();
 
         
         this.createPerspectiveCamera();
@@ -37,6 +38,7 @@ export default class Camera{
 
         this.movement.on("ordenador", this.moveToPc.bind(this))
         this.movement.on("arcade", this.moveToArcade.bind(this))
+        this.movement.on("ipad", this.moveToIpad.bind(this))
         this.movement.on("origen", this.moveToOrigin.bind(this));
         this.perspectiveCamera.updateProjectionMatrix()
 
@@ -83,6 +85,31 @@ export default class Camera{
             x:-0.6365761707513888,
             y:0.5528200874013415,
             z:0.6150046391096257,
+            duration: 2,
+            ease:"power3.inOut",
+            });
+    }
+
+    moveToIpad(){
+        // this.controls.enabled = false;
+        this.controls.maxAzimuthAngle = 10; // radians
+        this.controls.minDistance = 0;
+
+        let tl = new TimelineLite({
+            onComplete: function(){document.getElementById("ipadlink").click()}
+          });
+        gsap.to(this.perspectiveCamera.position, {
+            x:0.26787700903856626,
+            y:0.4993919828785641,
+            z:0.0310226241524231,
+            duration: 2,
+            ease:"power3.inOut",
+            });
+
+        tl.to(this.controls.target, {
+            x:0.266251750688448,
+            y:0.2999051499004339,
+            z:0.0304243598714693,
             duration: 2,
             ease:"power3.inOut",
             });
@@ -139,7 +166,7 @@ export default class Camera{
         this.controls.target.set(0.001, .3, 0.001)
 
         this.controls.minDistance = 0.3;
-        this.controls.maxDistance = 6;
+        this.controls.maxDistance = 8;
         this.controls.minAzimuthAngle = - Math.PI * 0.1; // radians
         this.controls.maxAzimuthAngle = Math.PI * 0.55; // radians
         this.controls.minPolarAngle = 0;
@@ -147,7 +174,7 @@ export default class Camera{
         this.controls.enableDamping = true;
         this.controls.rotateSpeed = .1;
         this.controls.panSpeed = .3;
-        this.controls.zoomSpeed = .5;
+        this.controls.zoomSpeed = .8;
         this.controls.enableZoom = true;
         // this.controls.rotateSpeed = 1;
         // this.controls.panSpeed = 1;

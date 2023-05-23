@@ -29,6 +29,9 @@ export default class Movement extends EventEmitter{
                 if(Objectname == "arcadehover"){
                     this.emit("arcade");
                 }
+                if(Objectname == "ipadhover"){
+                    this.emit("ipad");
+                }
             }
         }
 
