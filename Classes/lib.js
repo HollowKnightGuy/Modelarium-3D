@@ -19,6 +19,7 @@ let zorbstep;
  * @param {Number} CamPosition 
  * @param {Number} FinalPoint 
  * @returns Number
+ * @author Pablo <pablogervilla123@gmail.com>
  */
 export default class lib {
     constructor() {

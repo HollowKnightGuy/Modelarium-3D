@@ -1,4 +1,3 @@
-import './style.css';
 import Experience from './Classes/Experience/Experience';
 let person;
 
