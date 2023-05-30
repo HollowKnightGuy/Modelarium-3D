@@ -989,17 +989,14 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
     width: 220px;
   }
   .model--model {
-    height: 280px;
-  }
-  .model--model img {
-    width: 220px;
+    height: 190px;
   }
   .model--seebtn button {
     height: 0.8rem;
     width: 6.7rem;
   }
 }
-@media (min-width: 500px) and (max-width: 650px) {
+@media (min-width: 500px) and (max-width: 800px) {
   .model--model {
     height: 180px;
   }
@@ -1026,6 +1023,7 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
   .models {
     width: 95%;
   }
+  
   .model {
     width: 130px;
     padding-bottom: 0.8rem;
