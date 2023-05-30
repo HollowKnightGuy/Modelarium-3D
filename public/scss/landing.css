@@ -170,7 +170,7 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
     --fs-500: 1.2rem;
     --fs-600: 1.9rem;
     --fs-700: 2.3rem;
-    --fs-1000: 3.4rem;
+    --fs-1000: 3.6rem;
     --fs-landtext: 1.1rem;
     --fs-landlinks: 1rem;
     --height-header: 100px;
@@ -187,7 +187,7 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
     --fs-500: 1.7rem;
     --fs-600: 1.9rem;
     --fs-700: 2.3rem;
-    --fs-1000: 4.4rem;
+    --fs-1000: 4.6rem;
     --fs-landtext: 1.2rem;
     --fs-landlinks: 1.1rem;
     --height-header: 100px;
@@ -203,7 +203,7 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
     --fs-500: 1.6rem;
     --fs-600: 1.9rem;
     --fs-700: 2.3rem;
-    --fs-1000: 4.7rem;
+    --fs-1000: 5.7rem;
     --fs-landtext: 1.4rem;
     --fs-landlinks: 1.3rem;
     --height-header: 100px;
@@ -221,8 +221,8 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
     --fs-500: 1.6rem;
     --fs-600: 1.9rem;
     --fs-700: 2.3rem;
-    --fs-1000: 6rem;
-    --fs-landtext: 1.5rem;
+    --fs-1000: 8rem;
+    --fs-landtext: 1.8rem;
     --fs-landlinks: 1.5rem;
     --height-header: 100px;
     --width-logo: 50px;
@@ -285,7 +285,7 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
   width: 90%;
   position: absolute;
   background-color: #191121;
-  top: 20px;
+  top: 50px;
   right: 40px;
   text-align: right;
 }
@@ -354,7 +354,7 @@ input::-webkit-input-placeholder, input:-ms-input-placeholder, input:-moz-placeh
 }
 @media (min-width: 650px) and (max-width: 800px) {
   .landing {
-    gap: 2rem;
+    gap: 3rem;
   }
 }
 @media (min-width: 800px) and (max-width: 1100px) {
