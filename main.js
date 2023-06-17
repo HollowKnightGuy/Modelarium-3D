@@ -1,16 +1,7 @@
 import Experience from './Classes/Experience/Experience';
-let person;
-
-
-
-// Prompt that emulates the appereance of your name in the 3D model if you are already logged
-// person = prompt("Please enter your name");
-if(person === null || person === ''){
-    person = 'guest';
-}
 
 // We call the main class to initialize the 3D Room
-const experience = new Experience(document.querySelector('.experience-canvas'), person)
+const experience = new Experience(document.querySelector('.experience-canvas'), "User")
 
 // An event that make the interactive cursor to follow the real cursor
 document.onmousemove = e => {
